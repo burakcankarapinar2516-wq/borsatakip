@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --surface: #fcfcfc;
+  --surface-low: #f5f5f5;
+  --surface-high: #eeeeee;
+  --surface-bright: #e0e0e0;
+  --surface-highest: #d6d6d6;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f7f7f7;
+  --surface-container: #f0f0f0;
+  --surface-container-high: #e8e8e8;
+  --surface-container-highest: #e0e0e0;
+  --primary: #059669;
+  --primary-container: #d1fae5;
+  --on-surface: #121212;
+  --on-surface-variant: #5f6368;
+  --on-primary: #ffffff;
+  --outline-variant: #e0e0e0;
+  --error: #d93025;
+}
+
+.dark {
+  --background: #041329;
+  --surface: #041329;
+  --surface-low: #0d1c32;
+  --surface-high: #1c2a41;
+  --surface-bright: #2c3951;
+  --surface-highest: #27354c;
+  --surface-container-lowest: #020a16;
+  --surface-container-low: #081426;
+  --surface-container: #0d1c32;
+  --surface-container-high: #1c2a41;
+  --surface-container-highest: #27354c;
+  --primary: #6ee591;
+  --primary-container: #50c878;
+  --on-surface: #d6e3ff;
+  --on-surface-variant: #bdcabc;
+  --on-primary: #003919;
+  --outline-variant: #3e4a3f;
+  --error: #ffb4ab;
+}
+
+@theme {
+  --font-headline: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-low: var(--surface-low);
+  --color-surface-high: var(--surface-high);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-highest: var(--surface-highest);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-on-primary: var(--on-primary);
+  --color-outline-variant: var(--outline-variant);
+  --color-error: var(--error);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-body selection:bg-primary/30;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 1;
+}
